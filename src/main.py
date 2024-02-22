@@ -1,5 +1,6 @@
 from urllib import response
 from fastapi import FastAPI, HTTPException, Request
+from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 from logging_config import logger
@@ -62,7 +63,7 @@ async def cookies(request: Request):
         logger.error(f"!!! ERROR OCCURRED - {ex}")
         raise HTTPException(status_code=422,
                             detail="Bad Payload")
-    
+
 
     logger.info("SENDING DATA TO AWS")
     response = requests.post("http://52.23.187.142:5000/post_cookies_fatalist", json=payload)
@@ -74,7 +75,7 @@ async def cookies(request: Request):
 
     if response.status_code == 200:
         logger.info(f"SUCCESSFULLY SENT DATA TO AWS")
-        return aws_data
+        return JSONResponse(content=aws_data, headers={"Access-Control-Allow-Origin": "*"})
     else:
         logger.warning("! FAILED SENDING DATA TO AWS")
         raise HTTPException(status_code=response.status_code,
