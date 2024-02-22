@@ -17,7 +17,7 @@ async def index_options():
 
 @app.post("/cookies")
 async def cookies():
-    # 1. retreive any payload, this endpoint gets
+    # 1. retrieve any payload, this endpoint gets
     # 2. send data to another server (POST https://postman-echo.com/post)
     ...
 
