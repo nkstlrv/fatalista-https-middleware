@@ -57,6 +57,7 @@ async def cookies(request: Request):
 
     try:
         payload = await request.json()
+        logger.info(f"PAYLOAD RECEIVED - {payload}")
     except Exception as ex:
         logger.error(f"!!! ERROR OCCURRED - {ex}")
         raise HTTPException(status_code=422,
