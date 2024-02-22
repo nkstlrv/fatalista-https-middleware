@@ -1,6 +1,8 @@
-from fastapi import FastAPI
+from urllib import response
+from fastapi import FastAPI, HTTPException
 import uvicorn
 from logging_config import logger
+import requests
 
 
 app = FastAPI()
@@ -8,7 +10,7 @@ app = FastAPI()
 
 @app.get("/")
 async def index():
-    logger.info(f"INDEX ENDPOINT TRIGGERED")
+    logger.info("INDEX ENDPOINT TRIGGERED")
     return {"success": True}
 
 
@@ -18,16 +20,23 @@ async def index_options():
 
 
 @app.post("/cookies")
-async def cookies():
-    # 1. retrieve any payload, this endpoint gets
-    # 2. send data to another server (POST https://postman-echo.com/post)
-    ...
+async def cookies(payload: dict):
+    response = requests.post("https://postman-echo.com/post", json=payload)
+    if response.status_code == 200:
+        logger.info(f"Received payload data: {payload}")
+        return response.json()
+    else:
+        raise HTTPException(status_code=response.status_code,
+                            detail="Request failed")
 
 
 @app.options("/cookies")
 async def cookies_options():
-    # return something here :)
-    ...
+    response = {
+        "Allow": "GET, POST",
+        "Access-Control-Allow-Origin": "*",
+    }
+    return response
 
 
 if __name__ == "__main__":
