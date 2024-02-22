@@ -14,16 +14,16 @@ origins = [
     "http://localhost",
     "http://localhost:5000",
 
-    "https://aws-https-midleware.onrender.com/aws",
-    "https://aws-https-midleware.onrender.com",
+    "https://fatalista-https-middleware.onrender.com/cookies",
+    "https://fatalista-https-middleware.onrender.com",
 
-    "https://52.41.36.82:5000",
-    "https://54.191.253.12:5000",
-    "https://44.226.122.3:5000",
+    "https://3.75.158.163:8000",
+    "https://3.125.183.140:8000",
+    "https://35.157.117.28:8000",
 
-    "https://52.41.36.82:5000/aws",
-    "https://54.191.253.12:5000/aws",
-    "https://44.226.122.3:5000/aws",
+    "https://3.75.158.163:8000/cookies",
+    "https://3.125.183.140:8000/cookies",
+    "https://35.157.117.28:8000/cookies",
 
     # dragontail
     "https://dragontail.choiceqr.com"
