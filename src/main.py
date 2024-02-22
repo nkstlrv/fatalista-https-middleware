@@ -12,16 +12,19 @@ async def index():
 
 @app.options("/")
 async def index_options():
-    ...
+    return {"success": True}
 
 
 @app.post("/cookies")
 async def cookies():
+    # 1. retreive any payload, this endpoint gets
+    # 2. send data to another server (POST https://postman-echo.com/post)
     ...
 
 
 @app.options("/cookies")
 async def cookies_options():
+    # return something here :)
     ...
 
 
